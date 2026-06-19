@@ -5,7 +5,7 @@ train_transform = transforms.Compose([
 
     transforms.Resize((224, 224)),
 
-    transforms.RandomHorizontalFlip(10),
+    transforms.RandomHorizontalFlip(0.5), #Cần cân nhắc chỗ này, tham khảo các báo cáo khác
 
     transforms.RandomRotation(10),
 
