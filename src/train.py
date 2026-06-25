@@ -20,6 +20,8 @@ def get_device():
     else:
         device = torch.device('cpu')
 
+    return device
+
 def train(num_epochs=10, freeze_backbone=True, unfreeze_last_block=True):
 
     CHECkPOINT_DIR.mkdir(exist_ok=True)
@@ -135,3 +137,7 @@ def train(num_epochs=10, freeze_backbone=True, unfreeze_last_block=True):
     print(f"\nTraining done. Best val_acc: {best_val_acc:.4f}")
     print(f"Best model saved at: {BEST_MODEL_PATH}")
     print(f"History saved at: {HISTORY_PATH}")
+
+if __name__ == "__main__":
+
+    train(num_epochs=10)
