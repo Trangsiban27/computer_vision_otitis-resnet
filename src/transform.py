@@ -9,7 +9,7 @@ train_transform = transforms.Compose([
 
     transforms.RandomRotation(10),
 
-    transforms.ColorJitter(birghtness=0.2, contrast=0.2),
+    transforms.ColorJitter(brightness=0.2, contrast=0.2),
 
     transforms.ToTensor(),
 
