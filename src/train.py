@@ -22,14 +22,19 @@ def get_device():
 
     return device
 
-def train(num_epochs=10, freeze_backbone=True, unfreeze_last_block=True):
+def train(num_epochs=10, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1):
 
     CHECkPOINT_DIR.mkdir(exist_ok=True)
 
     device = get_device()
 
     # Model
-    model = build_model(num_classes=5, freeze_backbone=freeze_backbone, unfreeze_last_block=unfreeze_last_block)
+    model = build_model(
+        num_classes=5, 
+        resnet_version=resnet_version, 
+        freeze_backbone=freeze_backbone, 
+        unfreeze_last_layers=unfreeze_last_layers
+    )
     model.to(device)
 
     trainable, total = count_trainable_params(model)

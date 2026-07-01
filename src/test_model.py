@@ -88,7 +88,7 @@ def evaluate(checkpoint_path=None, verbose=True):
         print(f"Device: {device}")
  
     # ---- Load model + checkpoint ----
-    model = build_model(num_classes=5, freeze_backbone=True, unfreeze_last_block=True)
+    model = build_model(num_classes=5, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1)
     model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.to(device)
     model.eval()

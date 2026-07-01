@@ -18,7 +18,7 @@ def load_model(checkpoint_path=None):
         return _model_cache['model'], _model_cache['device']
     
     device = get_device()
-    model = build_model(num_classes=5, freeze_backbone=True, unfreeze_last_block=True)
+    model = build_model(num_classes=5, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1)
     model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.to(device)
     model.eval()
@@ -73,7 +73,7 @@ if __name__ == "__main__":
     #     print("Cách dùng: python predict.py <đường_dẫn_ảnh>")
     #     sys.exit(1)
  
-    result = predict("normal5.jpg")
+    result = predict("noisoitai1.jpg")
  
     print(f"\n--- Kết quả dự đoán ---")
     print(f"Lớp dự đoán (5-class): {result['predicted_class_5']} "
