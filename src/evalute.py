@@ -25,7 +25,7 @@ def plot_confusion_matrix(y_true, y_pred, classes, title):
 def evaluate_model(checkpoint_path=BEST_MODEL_PATH):
     device = get_device()
 
-    model = build_model(num_classes=5, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1)
+    model = build_model(num_classes=5, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1, se_reduction=16)
 
     model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.to(device)

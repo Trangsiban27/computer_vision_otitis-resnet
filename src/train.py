@@ -22,7 +22,7 @@ def get_device():
 
     return device
 
-def train(num_epochs=10, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1):
+def train(num_epochs=10, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1, se_reduction=16):
 
     CHECkPOINT_DIR.mkdir(exist_ok=True)
 
@@ -33,7 +33,8 @@ def train(num_epochs=10, resnet_version="resnet50", freeze_backbone=True, unfree
         num_classes=5, 
         resnet_version=resnet_version, 
         freeze_backbone=freeze_backbone, 
-        unfreeze_last_layers=unfreeze_last_layers
+        unfreeze_last_layers=unfreeze_last_layers,
+        se_reduction=se_reduction
     )
     model.to(device)
 

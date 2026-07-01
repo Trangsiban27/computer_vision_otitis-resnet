@@ -1,25 +1,34 @@
 import torch.nn as nn
 import torchvision.models as models
+from model_se_resnet50 import build_se_resnet50
 
 RESNET_VERSIONS = {
     "resnet18": models.resnet18,
     "resnet34": models.resnet34,
     "resnet50": models.resnet50,
+    "se_resnet50": build_se_resnet50,
 }
 
 def build_model(
     num_classes = 5,
     resnet_version = "resnet18",
     freeze_backbone = True,
-    unfreeze_last_layers = 1
+    unfreeze_last_layers = 1,
+    se_reduction = 16
 ):
-
-    # model = models.resnet18(
-    #     weights="IMAGENET1K_V1"
-    # )
-
     model_fn = RESNET_VERSIONS[resnet_version]
-    model = model_fn(weights="IMAGENET1K_V1")
+
+    if resnet_version == "se_resnet50":
+        print("se_resnet50")
+        model = model_fn(
+            num_classes=num_classes,
+            freeze_backbone=freeze_backbone,
+            unfreeze_last_layers=unfreeze_last_layers,
+            se_reduction=se_reduction
+        )
+    else:
+        print("resnet50")
+        model = model_fn(weights="IMAGENET1K_V1")
 
     if freeze_backbone:
 
@@ -54,7 +63,7 @@ def count_trainable_params(model):
     return trainable, total
 
 if __name__ == '__main__':
-    model = build_model(num_classes=5, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1)
+    model = build_model(num_classes=5, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1, se_reduction=16)
     trainable, total = count_trainable_params(model)
 
     print(f"Trainable params: {trainable:,} / {total:,} ({100*trainable/total:.1f}%)")

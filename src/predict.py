@@ -73,7 +73,7 @@ if __name__ == "__main__":
     #     print("Cách dùng: python predict.py <đường_dẫn_ảnh>")
     #     sys.exit(1)
  
-    result = predict("noisoitai1.jpg")
+    result = predict("viemtaigiuacaptinh1.jpeg")
  
     print(f"\n--- Kết quả dự đoán ---")
     print(f"Lớp dự đoán (5-class): {result['predicted_class_5']} "
