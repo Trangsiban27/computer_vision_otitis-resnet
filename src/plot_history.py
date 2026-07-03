@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import json
 from pathlib import Path
 
-HISTORY_PATH = 'checkpoints/history.json'
+# HISTORY_PATH = 'checkpoints/history.json'
+HISTORY_PATH = 'checkpoints/se_history.json'
 
 def plot_training_history(history_file):
     with open(history_file, mode='r') as f:

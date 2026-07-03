@@ -5,7 +5,7 @@ train_transform = transforms.Compose([
 
     transforms.Resize((224, 224)),
 
-    transforms.RandomHorizontalFlip(0.5), #Cần cân nhắc chỗ này, tham khảo các báo cáo khác
+    transforms.RandomHorizontalFlip(0.5), 
 
     transforms.RandomRotation(10),
 
@@ -22,7 +22,7 @@ train_transform = transforms.Compose([
 val_transform = transforms.Compose([
     transforms.ToPILImage(),
 
-    transforms.Resize((224, 224,)),
+    transforms.Resize((224, 224)),
 
     transforms.ToTensor(),
 

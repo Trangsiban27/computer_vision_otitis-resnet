@@ -8,9 +8,14 @@ from dataloader import (
 from pathlib import Path
 
 CHECkPOINT_DIR = Path('checkpoints')
-BEST_MODEL_PATH = CHECkPOINT_DIR / 'best_model.pth'
-HISTORY_PATH = CHECkPOINT_DIR / 'history.json'
+# BEST_MODEL_PATH = CHECkPOINT_DIR / 'best_model.pth'
+# HISTORY_PATH = CHECkPOINT_DIR / 'history.json'
 
+#---- SE ResNet50 -----
+BEST_MODEL_PATH = CHECkPOINT_DIR / 'se_best_model.pth'
+HISTORY_PATH = CHECkPOINT_DIR / 'se_history.json'
+
+RESNET_VERSION_USED = "se_resnet50"
 
 def get_device():
     if torch.backends.mps.is_available():
@@ -22,7 +27,7 @@ def get_device():
 
     return device
 
-def train(num_epochs=10, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1, se_reduction=16):
+def train(num_epochs=10, resnet_version=RESNET_VERSION_USED, freeze_backbone=True, unfreeze_last_layers=1, se_reduction=16):
 
     CHECkPOINT_DIR.mkdir(exist_ok=True)
 

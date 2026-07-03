@@ -17,8 +17,12 @@ from label_mapping import (
 )
 from train import BEST_MODEL_PATH
 
-CHECKPOINT_PATH = Path("checkpoints/best_model.pth")
-RESULTS_PATH = Path("checkpoints/test_results.json")
+# CHECKPOINT_PATH = Path("checkpoints/best_model.pth")
+# RESULTS_PATH = Path("checkpoints/test_results.json")
+
+# --- SE ----
+CHECKPOINT_PATH = Path("checkpoints/se_best_model.pth")
+RESULTS_PATH = Path("checkpoints/se_test_results.json")
 
 EXPECTED_ORDER = [
     "Acute Otitis Media",
@@ -32,6 +36,8 @@ assert CLASS_NAMES == EXPECTED_ORDER, (
     "CLASS_NAMES trong label_mapping.py không khớp với LABEL_MAP trong dataset.py. "
     "Kiểm tra lại thứ tự index ở cả 2 file trước khi tin kết quả bên dưới."
 )
+
+RESNET_VERSION_USED = "se_resnet50"
 
 def get_device():
     if torch.backends.mps.is_available():
@@ -88,7 +94,7 @@ def evaluate(checkpoint_path=None, verbose=True):
         print(f"Device: {device}")
  
     # ---- Load model + checkpoint ----
-    model = build_model(num_classes=5, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1)
+    model = build_model(num_classes=5, resnet_version=RESNET_VERSION_USED, freeze_backbone=True, unfreeze_last_layers=1)
     model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.to(device)
     model.eval()

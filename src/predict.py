@@ -8,6 +8,8 @@ from label_mapping import CLASS_NAMES, map_5class_to_binary, BINARY_CLASS_NAME
 #cache model
 _model_cache = {"model": None, "device": None}
 
+RESNET_VERSION_USED = "se_resnet50"
+
 def load_model(checkpoint_path=None):
     
     if checkpoint_path is None:
@@ -18,7 +20,7 @@ def load_model(checkpoint_path=None):
         return _model_cache['model'], _model_cache['device']
     
     device = get_device()
-    model = build_model(num_classes=5, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1)
+    model = build_model(num_classes=5, resnet_version=RESNET_VERSION_USED, freeze_backbone=True, unfreeze_last_layers=1)
     model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.to(device)
     model.eval()

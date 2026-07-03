@@ -9,6 +9,8 @@ RESNET_VERSIONS = {
     "se_resnet50": build_se_resnet50,
 }
 
+RESNET_VERSION_USED = "se_resnet50"
+
 def build_model(
     num_classes = 5,
     resnet_version = "resnet18",
@@ -63,7 +65,7 @@ def count_trainable_params(model):
     return trainable, total
 
 if __name__ == '__main__':
-    model = build_model(num_classes=5, resnet_version="resnet50", freeze_backbone=True, unfreeze_last_layers=1, se_reduction=16)
+    model = build_model(num_classes=5, resnet_version=RESNET_VERSION_USED, freeze_backbone=True, unfreeze_last_layers=1, se_reduction=16)
     trainable, total = count_trainable_params(model)
 
     print(f"Trainable params: {trainable:,} / {total:,} ({100*trainable/total:.1f}%)")
