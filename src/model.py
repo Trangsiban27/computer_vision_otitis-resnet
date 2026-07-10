@@ -9,7 +9,7 @@ RESNET_VERSIONS = {
     "se_resnet50": build_se_resnet50,
 }
 
-RESNET_VERSION_USED = "resnet50"
+RESNET_VERSION_USED = "se_resnet50"
 
 def build_model(
     num_classes = 5,

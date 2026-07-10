@@ -9,7 +9,7 @@ from train import BEST_MODEL_PATH, get_device
 from dataloader import test_loader
 from label_mapping import CLASS_NAMES, BINARY_CLASS_NAME, map_5class_to_binary
 
-RESNET_VERSION_USED = "resnet50"
+RESNET_VERSION_USED = "se_resnet50"
 
 def plot_confusion_matrix(y_true, y_pred, classes, title):
     cm = confusion_matrix(y_true, y_pred)
