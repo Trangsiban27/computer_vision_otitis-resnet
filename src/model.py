@@ -1,6 +1,6 @@
 import torch.nn as nn
 import torchvision.models as models
-from model_se_resnet50 import build_se_resnet50
+from src.model_se_resnet50 import build_se_resnet50
 
 RESNET_VERSIONS = {
     "resnet18": models.resnet18,
@@ -9,11 +9,11 @@ RESNET_VERSIONS = {
     "se_resnet50": build_se_resnet50,
 }
 
-RESNET_VERSION_USED = "se_resnet50"
+RESNET_VERSION_USED = "resnet50"
 
 def build_model(
     num_classes = 5,
-    resnet_version = "resnet18",
+    resnet_version = "resnet50",
     freeze_backbone = True,
     unfreeze_last_layers = 1,
     se_reduction = 16

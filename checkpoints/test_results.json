@@ -1,9 +1,9 @@
 {
   "5class": {
-    "accuracy": 0.9955555555555555,
-    "precision_macro": 0.9956043956043956,
-    "recall_macro": 0.9955555555555555,
-    "f1_macro": 0.9955428642373828,
+    "accuracy": 0.9977777777777778,
+    "precision_macro": 0.9978021978021978,
+    "recall_macro": 0.9977777777777778,
+    "f1_macro": 0.9977777091885554,
     "confusion_matrix": [
       [
         90,
@@ -28,29 +28,29 @@
       ],
       [
         0,
-        1,
         0,
-        88,
-        1
+        0,
+        90,
+        0
       ],
       [
         0,
         0,
         0,
-        0,
-        90
+        1,
+        89
       ]
     ]
   },
   "binary": {
-    "accuracy": 0.9977777777777778,
-    "precision_macro": 0.9972375690607735,
-    "recall_macro": 0.9981481481481482,
-    "f1_macro": 0.9976873146639669,
+    "accuracy": 1.0,
+    "precision_macro": 1.0,
+    "recall_macro": 1.0,
+    "f1_macro": 1.0,
     "confusion_matrix": [
       [
-        269,
-        1
+        270,
+        0
       ],
       [
         0,
