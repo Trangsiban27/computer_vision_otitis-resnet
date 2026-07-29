@@ -29,7 +29,7 @@ class SEBottleneck(Bottleneck):
 
     def __init__(self, inplanes, planes, stride=1, downsample=None,
                 groups=1, base_width=64, dilation=1, norm_layer=None,
-                se_reduction=16):
+                se_reduction=8):
         super().__init__(
             inplanes, planes, stride, downsample,
             groups, base_width, dilation, norm_layer
@@ -61,7 +61,7 @@ class SEBottleneck(Bottleneck):
 
         return out
     
-def _replace_bottleneck_with_se(module, se_reduction=16):
+def _replace_bottleneck_with_se(module, se_reduction=8):
     for name, child in module.named_children():
         if isinstance(child, Bottleneck):
             inplanes = child.conv1.in_channels
@@ -113,7 +113,7 @@ def build_se_resnet50(
     num_classes=5,
     freeze_backbone=False,
     unfreeze_last_layers=1,
-    se_reduction=16
+    se_reduction=8
 ):
     model = models.resnet50(weights="IMAGENET1K_V1")
 
@@ -155,7 +155,7 @@ if __name__ == "__main__":
         num_classes=5,
         freeze_backbone=True,
         unfreeze_last_layers=1,
-        se_reduction=16,
+        se_reduction=8,
     )
  
     trainable, total = count_trainable_params(model)

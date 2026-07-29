@@ -9,7 +9,7 @@ from train import BEST_MODEL_PATH, get_device
 from dataloader import test_loader
 from label_mapping import CLASS_NAMES, BINARY_CLASS_NAME, map_5class_to_binary
 
-RESNET_VERSION_USED = "resnet50"
+RESNET_VERSION_USED = "se_resnet50"
 
 def plot_confusion_matrix(y_true, y_pred, classes, title):
     cm = confusion_matrix(y_true, y_pred)
@@ -27,7 +27,7 @@ def plot_confusion_matrix(y_true, y_pred, classes, title):
 def evaluate_model(checkpoint_path=BEST_MODEL_PATH):
     device = get_device()
 
-    model = build_model(num_classes=5, resnet_version=RESNET_VERSION_USED, freeze_backbone=True, unfreeze_last_layers=1, se_reduction=16)
+    model = build_model(num_classes=5, resnet_version=RESNET_VERSION_USED, freeze_backbone=True, unfreeze_last_layers=1, se_reduction=8)
 
     model.load_state_dict(torch.load(checkpoint_path, map_location=device))
     model.to(device)

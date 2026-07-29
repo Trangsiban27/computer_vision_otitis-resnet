@@ -21,6 +21,11 @@ test_dataset = OtitisDataset(
     transform=val_transform
 )
 
+test_dataset_2 = OtitisDataset(
+    "test_data/test_data.csv",
+    transform=val_transform
+)
+
 train_loader = DataLoader(
     train_dataset,
     batch_size=32,
@@ -35,6 +40,12 @@ val_loader = DataLoader(
 
 test_loader = DataLoader(
     test_dataset,
+    batch_size=32,
+    shuffle=False
+)
+
+test_loader_2 = DataLoader(
+    test_dataset_2,
     batch_size=32,
     shuffle=False
 )

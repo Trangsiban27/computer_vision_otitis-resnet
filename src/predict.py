@@ -8,7 +8,7 @@ from label_mapping import CLASS_NAMES, map_5class_to_binary, BINARY_CLASS_NAME
 #cache model
 _model_cache = {"model": None, "device": None}
 
-RESNET_VERSION_USED = "resnet50"
+RESNET_VERSION_USED = "se_resnet50"
 
 def load_model(checkpoint_path=None):
     

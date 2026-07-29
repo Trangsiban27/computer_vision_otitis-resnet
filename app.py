@@ -27,8 +27,8 @@ st.markdown("Hệ thống sử dụng mạng ResNet-50 và SE-ResNet50 (cải ti
 def load_model():
     device = torch.device('cuda' if torch.cuda.is_available() else ('mps' if torch.backends.mps.is_available() else 'cpu'))
 
-    model = build_model(num_classes=5, freeze_backbone=True, unfreeze_last_layers=1, se_reduction=16)
-    se_model = build_model(num_classes=5, resnet_version="se_resnet50", freeze_backbone=True, unfreeze_last_layers=1, se_reduction=16)
+    model = build_model(num_classes=5, freeze_backbone=True, unfreeze_last_layers=1, se_reduction=8)
+    se_model = build_model(num_classes=5, resnet_version="se_resnet50", freeze_backbone=True, unfreeze_last_layers=1, se_reduction=8)
     
     checkpoint_path = "checkpoints/best_model.pth" 
     se_checkpoint_path = "checkpoints/se_best_model.pth"
